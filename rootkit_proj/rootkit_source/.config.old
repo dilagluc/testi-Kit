@@ -1,0 +1,45 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# Rootkit configuration
+#
+
+#
+# Enable feature you want tu use
+#
+CONFIG_AUTO_HIDE=y
+CONFIG_FILE_TAMPERING=y
+
+#
+# Give the name of tag you want to use
+#
+CONFIG_TAG_NAME="rk"
+
+#
+# END
+#
+# end of Give the name of tag you want to use
+
+CONFIG_HIDE_DIR_AND_FILES=y
+
+#
+# Base name
+#
+CONFIG_HIDE="rootkit"
+
+#
+# END
+#
+# end of Base name
+
+# CONFIG_NO_OPEN_HIDDEN is not set
+# CONFIG_NO_WRITE is not set
+# CONFIG_NO_DELETE is not set
+CONFIG_HIDE_PROCESS=y
+CONFIG_GIVE_ROOT=y
+
+#
+# Random for write_zero control
+#
+ZERO_WRITE=0x26fede
+WRITE_ZERO=0x24a2a8
+

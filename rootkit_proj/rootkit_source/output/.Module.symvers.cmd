@@ -1,0 +1,1 @@
+cmd_/home/parrot/Documents/testi/disk_image/bdss/output/Module.symvers := sed 's/\.ko$$/\.o/' /home/parrot/Documents/testi/disk_image/bdss/output/modules.order | scripts/mod/modpost -m -a  -o /home/parrot/Documents/testi/disk_image/bdss/output/Module.symvers -e -i Module.symvers   -T -

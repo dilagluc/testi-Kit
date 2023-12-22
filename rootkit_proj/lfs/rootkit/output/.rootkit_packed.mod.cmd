@@ -1,0 +1,1 @@
+cmd_/home/parrot/Documents/testi/disk_image/bdss/output/rootkit_packed.mod := { echo  /home/parrot/Documents/testi/disk_image/bdss/output/packer.o;  echo; } > /home/parrot/Documents/testi/disk_image/bdss/output/rootkit_packed.mod

@@ -1,0 +1,1 @@
+cmd_/home/parrot/Documents/testi/disk_image/bdss/output/rootkit_packed.o := ld -m elf_x86_64 -z noexecstack --no-warn-rwx-segments   -r -o /home/parrot/Documents/testi/disk_image/bdss/output/rootkit_packed.o /home/parrot/Documents/testi/disk_image/bdss/output/packer.o

@@ -1,0 +1,1 @@
+cmd_/home/parrot/Documents/testi/disk_image/bdss/output/modules.order := {   echo /home/parrot/Documents/testi/disk_image/bdss/output/rootkit_packed.ko; :; } | awk '!x[$$0]++' - > /home/parrot/Documents/testi/disk_image/bdss/output/modules.order

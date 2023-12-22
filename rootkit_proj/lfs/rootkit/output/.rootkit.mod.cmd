@@ -1,0 +1,1 @@
+cmd_/home/parrot/Documents/testi/disk_image/bdss/output/rootkit.mod := { echo  /home/parrot/Documents/testi/disk_image/bdss/output/rk.o;  echo; } > /home/parrot/Documents/testi/disk_image/bdss/output/rootkit.mod
